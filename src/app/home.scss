@@ -1,0 +1,39 @@
+.home {
+
+    .header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+
+        div {
+            width: 55%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h1 {
+                color: var(--white);
+                font-size: 40.19px;
+                font-weight: 700;
+                line-height: 40.19px;
+                letter-spacing: 0.08821529895067215px;
+            }
+
+            button {
+                padding: 16px;
+                border-radius: 8px;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 30px;
+                letter-spacing: -0.02em;
+                background: var(--red);
+                color: var(--white);
+                transition: all ease .5s;
+
+                &:hover {
+                    background: #ee1d0f;
+                }
+            }
+        }
+    }
+}
