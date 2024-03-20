@@ -85,7 +85,11 @@ export default function Home() {
 									value={playersName.player1}
 									className={playersError.player1Error ? 'error-outline' : ''}
 								/>
-								{playersError.player1Error && <p>Please enter player 1 name</p>}
+								{playersError.player1Error ? (
+									<p>Please enter player 1 name</p>
+								) : (
+									<p>&nbsp;</p>
+								)}
 							</div>
 							<div>
 								<Image src={player2} alt='player 2' />
@@ -98,7 +102,11 @@ export default function Home() {
 									value={playersName.player2}
 									className={playersError.player2Error ? 'error-outline' : ''}
 								/>
-								{playersError.player2Error && <p>Please enter player 2 name</p>}
+								{playersError.player2Error ? (
+									<p>Please enter player 2 name</p>
+								) : (
+									<p>&nbsp;</p>
+								)}
 							</div>
 						</div>
 						<button onClick={letsPlay}>Let's Play</button>
