@@ -1,95 +1,110 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { Errors, Users } from '@/modules/modules';
+import player1 from './assets/player-1-img.svg';
+import player2 from './assets/player-2-img.svg';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import Image from 'next/image';
+import './home.scss';
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+	// player states
+	const [playersName, setPlayersName] = useState<Users>({
+		player1: '',
+		player2: '',
+	});
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+	// error states
+	const [playersError, setPlayersError] = useState<Errors>({
+		player1Error: false,
+		player2Error: false,
+	});
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+	//next router hook
+	const router = useRouter();
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+	//proceed function
+	const letsPlay = () => {
+		//copy of errors in an obj to be used independenly when triggered
+		const errors = {
+			player1Error: !playersName.player1,
+			player2Error: !playersName.player2,
+		};
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+		//tracker if requirements are met or not
+		let letsGo: boolean = false;
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+		//condition logic
+		if (!playersName.player1) {
+			setPlayersError({ ...playersError, player1Error: true });
+		} else {
+			setPlayersError({ ...playersError, player1Error: false });
+			letsGo = true;
+		}
+		if (!playersName.player2) {
+			setPlayersError({ ...playersError, player2Error: true });
+		} else {
+			setPlayersError({ ...playersError, player2Error: false });
+			letsGo = true;
+		}
+		//assigning errors obj to state after firing
+		setPlayersError(errors);
+
+		letsGo = !errors.player1Error && !errors.player2Error;
+
+		//router hook to nav to game
+		if (letsGo) {
+			router.push('/game');
+		}
+
+		return console.log(letsGo, playersName);
+	};
+
+	return (
+		<>
+			<section className='home'>
+				<header>
+					<div>
+						<h1>Memory</h1>
+						<button>Exit Game</button>
+					</div>
+				</header>
+				<div className='home-content'>
+					<div className='home-body'>
+						<h2>Are you ready to play?</h2>
+						<div className='players'>
+							<div>
+								<Image src={player1} alt='player 1' />
+								<input
+									type='text'
+									placeholder='Player 1'
+									onChange={(e) =>
+										setPlayersName({ ...playersName, player1: e.target.value })
+									}
+									value={playersName.player1}
+									className={playersError.player1Error ? 'error-outline' : ''}
+								/>
+								{playersError.player1Error && <p>Please enter player 1 name</p>}
+							</div>
+							<div>
+								<Image src={player2} alt='player 2' />
+								<input
+									type='text'
+									placeholder='Player 2'
+									onChange={(e) =>
+										setPlayersName({ ...playersName, player2: e.target.value })
+									}
+									value={playersName.player2}
+									className={playersError.player2Error ? 'error-outline' : ''}
+								/>
+								{playersError.player2Error && <p>Please enter player 2 name</p>}
+							</div>
+						</div>
+						<button onClick={letsPlay}>Let's Play</button>
+					</div>
+				</div>
+			</section>
+		</>
+	);
 }
