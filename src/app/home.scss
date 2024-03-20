@@ -41,7 +41,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 591px;
+        height: 100%;
         width: 100%;
         margin-top: 144px;
 
@@ -121,4 +121,119 @@
 
 .error-outline {
     outline: solid var(--red);
+}
+
+@media screen and (max-width: 1024px) {
+    .home {
+        header {
+            div {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .home {
+
+        header {
+
+            div {
+                width: 55vw;
+
+                h1 {
+                    font-size: 32px;
+                    font-weight: 700;
+                    line-height: 48px;
+                    letter-spacing: -0.02em;
+                }
+
+                button {
+                    padding: 8px;
+                    font-size: 12px;
+                    font-weight: 700;
+                    line-height: 18px;
+                    letter-spacing: -0.02em;
+                }
+            }
+        }
+
+        .home-content {
+            margin-top: 100px;
+
+            .home-body {
+                background: var(--mobile-bg);
+                padding: 15px 34px;
+                border-radius: 8px;
+
+                h2 {
+                    font-size: 24px;
+                    font-weight: 700;
+                    line-height: 24px;
+                    letter-spacing: 0.18000000715255737px;
+                    margin-bottom: 35px;
+                    text-align: center;
+                }
+
+                .players {
+                    flex-direction: column;
+
+                    >div {
+                        flex-direction: column;
+                        width: 100%;
+
+                        img {
+                            height: 150px;
+                            max-width: 150.08px;
+                            width: 100%;
+                            align-self: flex-end;
+                        }
+
+                        input {
+                            margin-top: 16px;
+                            padding: 8px 16px;
+                        }
+
+                        &:first-child {
+                            margin-right: 0px;
+                            margin-bottom: 35px;
+                        }
+
+                        p {
+                            font-size: 15px;
+                            margin-top: 10px;
+                            color: var(--red);
+                        }
+
+                        &:nth-child(1) {
+                            img {
+                                align-self: flex-start;
+                            }
+                        }
+                    }
+                }
+
+                button {
+                    color: var(--dark-blue);
+                    margin-top: 12px;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 16px;
+                    letter-spacing: 1px;
+                    padding: 8px 20px;
+                    background: var(--mobile-blue);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .home {
+        header {
+            div {
+                width: 100%;
+            }
+        }
+    }
 }

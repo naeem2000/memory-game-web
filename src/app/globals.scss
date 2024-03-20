@@ -6,8 +6,11 @@
     --yellow: #F4A236;
     --green: #0AB169;
     --red-hover: #ee1d0f;
+    --mobile-bg: linear-gradient(107.62deg, rgba(255, 255, 255, 0.6) -0.7%, rgba(255, 255, 255, 0.1) 102.18%);
+    --mobile-blue: #A7DAFF;
+    --dark-blue: #164464;
     --gradient-yellow: linear-gradient(92.15deg, #FFD975 35.31%, #FFFFFF 135.61%);
-    --gradient-blue: radial-gradient(157.07% 157.07% at 171.6% 173.4%, rgba(255, 255, 255, 0.7) 0%, rgba(62, 146, 206, 0.7) 100%)
+    --gradient-blue: radial-gradient(157.07% 157.07% at 171.6% 173.4%, rgba(255, 255, 255, 0.7) 0%, rgba(62, 146, 206, 0.7) 100%);
 }
 
 * {
@@ -19,6 +22,7 @@
 
 body {
     background: var(--gradient-blue);
+    background-attachment: fixed;
     height: 100vh;
 }
 
@@ -29,4 +33,14 @@ button {
 
 section {
     padding: 32px 47px;
+}
+
+@media screen and (max-width:820px) {
+    body {
+        height: 100%;
+    }
+
+    section {
+        padding: 20px 20px;
+    }
 }
