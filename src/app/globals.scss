@@ -5,6 +5,7 @@
     --red: #D4190C;
     --yellow: #F4A236;
     --green: #0AB169;
+    --red-hover: #ee1d0f;
     --gradient-yellow: linear-gradient(92.15deg, #FFD975 35.31%, #FFFFFF 135.61%);
     --gradient-blue: radial-gradient(157.07% 157.07% at 171.6% 173.4%, rgba(255, 255, 255, 0.7) 0%, rgba(62, 146, 206, 0.7) 100%)
 }
@@ -12,6 +13,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
