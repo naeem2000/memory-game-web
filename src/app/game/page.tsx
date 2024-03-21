@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { CurrentPlayers } from '@/modules/modules';
 import './game.scss';
+import Header from '../Components/Header';
 
 export default function Page() {
 	const [players, setPlayers] = useState<CurrentPlayers>();
@@ -12,14 +13,13 @@ export default function Page() {
 		if (userString) {
 			const user = JSON.parse(userString);
 			setPlayers(user);
-		} else {
-			setPlayers(undefined);
 		}
 	}, []);
 	console.log(players);
 
 	return (
 		<section>
+			<Header />
 			{players && <p>{players.player1}</p>}
 			{players && <p>{players.player2}</p>}
 		</section>

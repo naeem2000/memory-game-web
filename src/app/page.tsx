@@ -5,6 +5,7 @@ import player1 from './assets/player-1-img.svg';
 import player2 from './assets/player-2-img.svg';
 import Image from 'next/image';
 import './home.scss';
+import Header from './Components/Header';
 
 export default function Home() {
 	//custom hook to set the players
@@ -12,12 +13,7 @@ export default function Home() {
 	return (
 		<>
 			<section className='home'>
-				<header>
-					<div>
-						<h1>Memory</h1>
-						<button>Exit Game</button>
-					</div>
-				</header>
+				<Header />
 				<div className='home-content'>
 					<div className='home-body'>
 						<h2>Are you ready to play?</h2>

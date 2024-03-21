@@ -47,7 +47,7 @@ export function usePlayers() {
 
 		letsGo = !errors.player1Error && !errors.player2Error;
 
-		//navigation hook to nav to game
+		//navigation hook to nav to game and store player names upon sucess
 		if (letsGo) {
 			localStorage.setItem('users', JSON.stringify(playersName));
 			router.push('/game');
@@ -55,6 +55,7 @@ export function usePlayers() {
 
 		return console.log('hook', letsGo, playersName);
 	};
+
 	return {
 		setPlayersError,
 		setPlayersName,
