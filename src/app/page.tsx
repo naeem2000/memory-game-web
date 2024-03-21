@@ -1,75 +1,19 @@
 'use client';
 
-import { Errors, Users } from '@/modules/modules';
+import { usePlayers } from './hooks/usePlayers';
 import player1 from './assets/player-1-img.svg';
 import player2 from './assets/player-2-img.svg';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import Header from './Components/Header';
 import Image from 'next/image';
 import './home.scss';
 
 export default function Home() {
-	// player states
-	const [playersName, setPlayersName] = useState<Users>({
-		player1: '',
-		player2: '',
-	});
-
-	// error states
-	const [playersError, setPlayersError] = useState<Errors>({
-		player1Error: false,
-		player2Error: false,
-	});
-
-	//next router hook
-	const router = useRouter();
-
-	//proceed function
-	const letsPlay = () => {
-		//copy of errors in an obj to be used independenly when triggered
-		const errors = {
-			player1Error: !playersName.player1,
-			player2Error: !playersName.player2,
-		};
-
-		//tracker if requirements are met or not
-		let letsGo: boolean = false;
-
-		//condition logic
-		if (!playersName.player1) {
-			setPlayersError({ ...playersError, player1Error: true });
-		} else {
-			setPlayersError({ ...playersError, player1Error: false });
-			letsGo = true;
-		}
-		if (!playersName.player2) {
-			setPlayersError({ ...playersError, player2Error: true });
-		} else {
-			setPlayersError({ ...playersError, player2Error: false });
-			letsGo = true;
-		}
-		//assigning errors obj to state after firing
-		setPlayersError(errors);
-
-		letsGo = !errors.player1Error && !errors.player2Error;
-
-		//router hook to nav to game
-		if (letsGo) {
-			router.push('/game');
-		}
-
-		return console.log(letsGo, playersName);
-	};
-
+	//custom hook to set the players
+	const { setPlayersName, playersName, playersError, letsPlay } = usePlayers();
 	return (
 		<>
 			<section className='home'>
-				<header>
-					<div>
-						<h1>Memory</h1>
-						<button>Exit Game</button>
-					</div>
-				</header>
+				<Header />
 				<div className='home-content'>
 					<div className='home-body'>
 						<h2>Are you ready to play?</h2>
