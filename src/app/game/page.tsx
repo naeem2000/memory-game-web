@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { CurrentPlayers } from '@/modules/modules';
-import './game.scss';
 import Header from '../Components/Header';
+import './game.scss';
 
 export default function Page() {
 	const [players, setPlayers] = useState<CurrentPlayers>();

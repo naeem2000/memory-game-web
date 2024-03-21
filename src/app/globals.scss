@@ -4,8 +4,9 @@
     --white: #FFFFFF;
     --red: #D4190C;
     --yellow: #F4A236;
+    --yellow-hover: #ffae44;
     --green: #0AB169;
-    --red-hover: #ee1d0f;
+    --red-hover: #ff1100;
     --mobile-bg: linear-gradient(107.62deg, rgba(255, 255, 255, 0.6) -0.7%, rgba(255, 255, 255, 0.1) 102.18%);
     --mobile-blue: #A7DAFF;
     --dark-blue: #164464;
@@ -54,19 +55,33 @@ header {
             letter-spacing: 0.08821529895067215px;
         }
 
-        button {
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 30px;
-            letter-spacing: -0.02em;
-            background: var(--red);
-            color: var(--white);
-            transition: all ease .5s;
+        div {
+            display: flex;
+            justify-content: flex-end;
 
-            &:hover {
-                background: var(--red-hover);
+            button {
+                padding: 16px;
+                border-radius: 8px;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 30px;
+                letter-spacing: -0.02em;
+                transition: all ease .5s;
+                color: var(--white);
+                background: var(--yellow);
+
+                &:hover {
+                    background: var(--yellow-hover);
+                }
+
+                &:last-child {
+                    background: var(--red);
+                    margin-left: 30px;
+
+                    &:hover {
+                        background: var(--red-hover);
+                    }
+                }
             }
         }
     }
@@ -103,12 +118,14 @@ header {
                 letter-spacing: -0.02em;
             }
 
-            button {
-                padding: 8px;
-                font-size: 12px;
-                font-weight: 700;
-                line-height: 18px;
-                letter-spacing: -0.02em;
+            div {
+                button {
+                    padding: 8px;
+                    font-size: 12px;
+                    font-weight: 700;
+                    line-height: 18px;
+                    letter-spacing: -0.02em;
+                }
             }
         }
     }
