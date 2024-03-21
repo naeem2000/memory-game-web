@@ -162,3 +162,75 @@
         }
     }
 }
+
+@media screen and (orientation: landscape) and (max-width: 1000px) {
+    .home {
+
+        .home-content {
+            margin-top: 100px;
+
+            .home-body {
+                background: var(--mobile-bg);
+                padding: 23px 50px;
+                border-radius: 8px;
+
+                h2 {
+                    font-size: 24px;
+                    font-weight: 700;
+                    line-height: 24px;
+                    letter-spacing: 0.18000000715255737px;
+                    margin-bottom: 35px;
+                    text-align: center;
+                }
+
+                .players {
+                    flex-direction: row;
+
+                    >div {
+                        width: 100%;
+
+                        img {
+                            height: 150px;
+                            max-width: 150.08px;
+                            width: 100%;
+                            align-self: flex-end;
+                        }
+
+                        input {
+                            margin-top: 16px;
+                            padding: 8px 16px;
+                        }
+
+                        &:first-child {
+                            margin-right: 40px;
+                            margin-bottom: 0px;
+                        }
+
+                        p {
+                            font-size: 15px;
+                            margin-top: 10px;
+                            color: var(--red);
+                        }
+
+                        &:nth-child(1) {
+                            img {
+                                align-self: flex-start;
+                            }
+                        }
+                    }
+                }
+
+                button {
+                    color: var(--dark-blue);
+                    margin-top: 12px;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 16px;
+                    letter-spacing: 1px;
+                    padding: 8px 20px;
+                    background: var(--mobile-blue);
+                }
+            }
+        }
+    }
+}
