@@ -49,10 +49,11 @@ export function usePlayers() {
 
 		//navigation hook to nav to game
 		if (letsGo) {
+			localStorage.setItem('users', JSON.stringify(playersName));
 			router.push('/game');
 		}
 
-		return console.log(letsGo, playersName);
+		return console.log('hook', letsGo, playersName);
 	};
 	return {
 		setPlayersError,
