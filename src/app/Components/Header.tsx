@@ -9,7 +9,9 @@ export default function Header() {
 			<div>
 				<h1>Memory</h1>
 				<div>
-					{path === '/game' && <button>Restart Game</button>}
+					{path === '/game' && (
+						<button>Restart Game</button> // Call reset function when button is clicked
+					)}
 					<button>Exit Game</button>
 				</div>
 			</div>

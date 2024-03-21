@@ -3,9 +3,9 @@
 import { usePlayers } from './hooks/usePlayers';
 import player1 from './assets/player-1-img.svg';
 import player2 from './assets/player-2-img.svg';
+import Header from './Components/Header';
 import Image from 'next/image';
 import './home.scss';
-import Header from './Components/Header';
 
 export default function Home() {
 	//custom hook to set the players
