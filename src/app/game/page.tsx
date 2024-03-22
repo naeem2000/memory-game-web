@@ -1,11 +1,12 @@
 'use client';
 
 import facedDown from '../assets/cards/Card_Back.svg';
-import React, { useEffect, useState } from 'react';
-import { CurrentPlayers } from '@/modules/modules';
 import player1Img from '../assets/player-1-img.svg';
 import player2Img from '../assets/player-2-img.svg';
+import { CurrentPlayers } from '@/modules/modules';
+import React, { useEffect, useState } from 'react';
 import Header from '../Components/Header';
+import rotate from '../assets/rotate.png';
 import { cards } from '../data';
 import Image from 'next/image';
 import './game.scss';
@@ -19,7 +20,7 @@ export default function Page() {
 	const [player2Score, setPlayer2Score] = useState(0);
 	const [currentPlayer, setCurrentPlayer] = useState(1);
 
-	//function to reset everything once the page mounts
+	//function to reset deck once the page mounts
 	const shuffleDeck = () => {
 		const shuffledDeck = [...board].sort(() => Math.random() - 0.5);
 		setBoard(shuffledDeck);
@@ -119,8 +120,33 @@ export default function Page() {
 					{currentPlayer === 2 ? <p>It’s your turn</p> : <span>&nbsp;</span>}
 				</div>
 			</div>
+
+			<div className='mobile-cards'>
+				<div className='player-card'>
+					<Image src={player1Img} alt='player 1' />
+					<p>{players?.player1} </p>
+					{currentPlayer === 1 ? (
+						<div>It’s your turn</div>
+					) : (
+						<span>&nbsp;</span>
+					)}
+					<p>{player1Score}</p>
+				</div>
+				<p>Score</p>
+				<div className='player-card'>
+					<Image src={player2Img} alt='player 2' />
+					<p>{players?.player2}</p>
+					{currentPlayer === 2 ? (
+						<div>It’s your turn</div>
+					) : (
+						<span>&nbsp;</span>
+					)}
+					<p>{player2Score}</p>
+				</div>
+			</div>
 			<div className='rotate-notify'>
-				<p>Please rotate your screen</p>
+				<p>Please rotate your device</p>
+				<Image src={rotate} alt='rotate' />
 			</div>
 		</section>
 	);

@@ -10,6 +10,7 @@
     --mobile-bg: linear-gradient(107.62deg, rgba(255, 255, 255, 0.6) -0.7%, rgba(255, 255, 255, 0.1) 102.18%);
     --mobile-blue: #A7DAFF;
     --dark-blue: #164464;
+    --blue: #489DDA;
     --gradient-yellow: linear-gradient(92.15deg, #FFD975 35.31%, #FFFFFF 135.61%);
     --gradient-blue: radial-gradient(157.07% 157.07% at 171.6% 173.4%, rgba(255, 255, 255, 0.7) 0%, rgba(62, 146, 206, 0.7) 100%);
 }
@@ -148,5 +149,22 @@ header {
                 }
             }
         }
+    }
+}
+
+@media screen and (orientation: landscape) and (max-width: 1000px) {
+    body {
+        height: 100%;
+    }
+
+    header div {
+        width: 51vw;
+    }
+}
+
+
+@media screen and (orientation: landscape) and (max-width: 750px) {
+    header div {
+        width: 56vw;
     }
 }

@@ -1,8 +1,14 @@
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 
 export default function Header() {
 	const path = usePathname();
+	const router = useRouter();
+
+	const exit = () => {
+		router.push('/');
+		localStorage.clear();
+	};
 
 	return (
 		<header>
@@ -12,7 +18,7 @@ export default function Header() {
 					{path === '/game' && (
 						<button>Restart Game</button> // Call reset function when button is clicked
 					)}
-					<button>Exit Game</button>
+					<button onClick={exit}>Exit Game</button>
 				</div>
 			</div>
 		</header>
