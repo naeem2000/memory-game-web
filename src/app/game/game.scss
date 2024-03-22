@@ -29,6 +29,17 @@
             }
         }
 
+        .its-a-wrap {
+            margin-top: 58px;
+            background: url(../assets/match.svg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 852px;
+            height: 845px;
+            border-radius: 18px;
+        }
+
+
         .card-section {
             display: flex;
             align-items: center;
@@ -137,6 +148,13 @@
                 }
             }
 
+            .its-a-wrap {
+                margin-top: 100px;
+                max-width: 780px;
+                height: 250.72px;
+                background-position: center;
+            }
+
             .card-section {
                 display: none;
             }
@@ -216,13 +234,20 @@
     }
 }
 
-@media screen and (orientation: landscape) and (max-width: 915px) {
+@media screen and (orientation: landscape) and (max-width: 935px) {
     .game {
         .game-body {
             .board {
                 margin-top: 20px;
             }
 
+            .its-a-wrap {
+                margin-top: 20px;
+                width: 790px;
+                height: 214.72px;
+                background-position: center;
+
+            }
 
         }
 
