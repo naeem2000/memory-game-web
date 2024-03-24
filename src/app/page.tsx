@@ -13,7 +13,11 @@ export default function Home() {
 	return (
 		<>
 			<section className='home'>
-				<Header />
+				<Header
+					reset={function (): void {
+						throw new Error('Function not implemented.');
+					}}
+				/>
 				<div className='home-content'>
 					<div className='home-body'>
 						<h2>Are you ready to play?</h2>
