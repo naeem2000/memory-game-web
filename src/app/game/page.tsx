@@ -5,6 +5,7 @@ import player1Img from '../assets/player-1-img.svg';
 import player2Img from '../assets/player-2-img.svg';
 import { CurrentPlayers } from '@/modules/modules';
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Header from '../Components/Header';
 import rotate from '../assets/rotate.png';
 import { cards } from '../data';
@@ -20,6 +21,8 @@ export default function Page() {
 	const [player2Score, setPlayer2Score] = useState(0);
 	const [currentPlayer, setCurrentPlayer] = useState(1);
 	const [gameCompleted, setGameCompleted] = useState(false);
+
+	const router = useRouter();
 
 	//function to reset deck once the page mounts
 	const shuffleDeck = () => {
@@ -39,8 +42,6 @@ export default function Page() {
 		shuffleDeck();
 	}, []);
 
-	console.log(players);
-
 	const handleCardClick = (index: number) => {
 		// comparing the cards if it's = or less than 2, or if the card matches the index
 		if (flippedCards.length >= 2 || flippedCards.includes(index)) return;
@@ -55,8 +56,13 @@ export default function Page() {
 
 			// checking if the flipped cards match each other's alt attributes
 			if (board[firstCardIndex].alt === board[secondCardIndex].alt) {
-				console.log('Match!');
-				// condition if the player got 1 match right, add a score point
+				//storing player scores in an object for stringify then parse for local storage
+				const winner = {
+					score1: player1Score,
+					score2: player2Score,
+				};
+				localStorage.setItem('winner', JSON.stringify(winner));
+				// condition if the player got 1 match right, add a score point to the player
 				if (currentPlayer === 1) {
 					setPlayer1Score((prevScore) => prevScore + 1);
 				} else {
@@ -82,15 +88,26 @@ export default function Page() {
 
 	//replace the board with its a wrap image
 	useEffect(() => {
-		if (board.length === 0) {
+		if (board.length !== 0) {
 			setGameCompleted(true);
+			//navigate to the winner page
+			setTimeout(() => {
+				router.push('/winner');
+			}, 2000);
 		}
 	}, [board]);
 
-	console.log('complete', gameCompleted);
+	//reset game function
+	const reset = () => {
+		setBoard(cards.card);
+		setPlayer1Score(0);
+		setPlayer2Score(0);
+		setGameCompleted(false);
+	};
+
 	return (
 		<section className='game'>
-			<Header />
+			<Header reset={reset} />
 			<div className='game-body'>
 				<div className='card-section'>
 					<div className='player-card'>
@@ -105,7 +122,7 @@ export default function Page() {
 						{board.map((card, index) => (
 							<div key={index} onClick={() => handleCardClick(index)}>
 								<Image
-									src={flippedCards.includes(index) ? card.img : facedDown}
+									src={!flippedCards.includes(index) ? card.img : facedDown}
 									alt={card.alt}
 								/>
 							</div>
