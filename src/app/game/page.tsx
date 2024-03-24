@@ -61,6 +61,7 @@ export default function Page() {
 					score1: player1Score,
 					score2: player2Score,
 				};
+				//update player score as it changes
 				localStorage.setItem('winner', JSON.stringify(winner));
 				// condition if the player got 1 match right, add a score point to the player
 				if (currentPlayer === 1) {
@@ -88,7 +89,7 @@ export default function Page() {
 
 	//replace the board with its a wrap image
 	useEffect(() => {
-		if (board.length !== 0) {
+		if (board.length === 0) {
 			setGameCompleted(true);
 			//navigate to the winner page
 			setTimeout(() => {
@@ -122,7 +123,7 @@ export default function Page() {
 						{board.map((card, index) => (
 							<div key={index} onClick={() => handleCardClick(index)}>
 								<Image
-									src={!flippedCards.includes(index) ? card.img : facedDown}
+									src={flippedCards.includes(index) ? card.img : facedDown}
 									alt={card.alt}
 								/>
 							</div>
